@@ -24,5 +24,7 @@ void exec_func(stack_t **head, char *line, unsigned int line_no)
 		}
 	}
 	printf("L%d: unknown instruction %s\n", line_no, sep_line[0]);
+	free(line);
+	free_list(*head);
 	exit(EXIT_FAILURE);
 }

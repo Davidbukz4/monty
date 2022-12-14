@@ -5,10 +5,10 @@ void _push(stack_t **head, char *line, unsigned int line_no)
 	char *val = NULL;
 	stack_t *node = NULL;
 	int iVal = 0;
-	char **new_line = NULL;
+	/*char **new_line = NULL;*/
 
-	new_line = _strtow(line, ' ');
-	val = chk_val(new_line[1]);/* code this function */
+	/* new_line = _strtow(line, ' '); */
+	val = chk_val(line);
 	if (val == NULL)
 	{
 		printf("L%d: usage: push integer\n", line_no);
