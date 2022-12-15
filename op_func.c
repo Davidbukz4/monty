@@ -105,3 +105,33 @@ void _pop(stack_t **head, unsigned int line_no)
 		(*head)->prev = NULL;
 	free(temp);
 }
+
+
+/**
+ * _swap - swap the values of the top and last elements
+ * @head: pointer to head node
+ * @line_no: line number
+ */
+void _swap(stack_t **head, unsigned int line_no)
+{
+	int old_value;
+
+	if (!head || !*head)
+	{
+		printf("L%d: can't swap, stack too short\n", line_no);
+		free_list(*head);
+		exit(EXIT_FAILURE);
+	}
+
+	old_value = (*head)->n;
+
+	if ((*head)->next == NULL)
+	{
+		printf("L%d: can't swap, stack too short\n", line_no);
+		free_list(*head);
+		exit(EXIT_FAILURE);
+	}
+
+	(*head)->n = ((*head)->next)->n;
+	((*head)->next)->n = old_value;
+}
