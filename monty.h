@@ -45,5 +45,10 @@ int _strcmp(char *s1, char *s2);
 char *chk_val(char *line);
 void _push(stack_t **head, char *line, unsigned int line_no);
 stack_t *add_node(stack_t **head, int n);
+char *skip_spaces(char *str);
+int _strlen(char *s);
+int _strncmp(char *s1, char *s2, int n);
+char **sep_str(char *line);
+
 
 #endif /* MONTY_H */

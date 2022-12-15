@@ -4,14 +4,20 @@ void _push(stack_t **head, char *line, unsigned int line_no)
 {
 	char *val = NULL;
 	stack_t *node = NULL;
-	int iVal = 0;
-	/*char **new_line = NULL;*/
+	int iVal = 0, i;
+	char **new_line = NULL;
 
 	/* new_line = _strtow(line, ' '); */
-	val = chk_val(line);
+	new_line = sep_str(line);
+	for (i = 0; new_line[i]; i++)
+	{
+		val = chk_val(new_line[i]);
+		if (val)
+			break;
+	}
 	if (val == NULL)
 	{
-		printf("L%d: usage: push integer\n", line_no);
+		fprintf(stderr, "L%d: usage: push integer\n", line_no);
 		free(line);
 		free(*head);
 		*head = NULL;
@@ -21,8 +27,8 @@ void _push(stack_t **head, char *line, unsigned int line_no)
 	node = add_node(head, iVal);
 	if (node == NULL)
 	{
-		printf("Error: malloc failed");
-		free(*head);
+		fprintf(stderr, "Error: malloc failed");
+		free_list(*head);
 		exit(EXIT_FAILURE);
 	}
 }

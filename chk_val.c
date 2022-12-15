@@ -2,13 +2,14 @@
 
 char *chk_val(char *line)
 {
-	if (!line)
+	char *num = line;
+	if (!num)
 		return (NULL);
-	while (*line && (*line < '0' || *line > '9'))
+	while (*num && (*num < '0' || *num > '9'))
 	{
-		++line;
+		++num;
 	}
-	if (*line == '\0')
+	if (*num == '\0')
 		return (NULL);
-	return (line);
+	return (num);
 }

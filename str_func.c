@@ -85,3 +85,49 @@ int _strcmp(char *s1, char *s2)
 	return (comparison);
 }
 
+
+char *skip_spaces(char *str)
+{
+	if (!str)
+		return (NULL);
+
+	while (*str && *str == ' ')
+		++str;
+	if (*str == '\0') /*empty string*/
+		return (NULL);
+
+	return (str);
+}
+
+int _strlen(char *s)
+{
+	int x = 0;
+
+	while (s[x] != '\0')
+	{
+		x++;
+	}
+	return (x);
+}
+
+int _strncmp(char *s1, char *s2, int n)
+{
+	int i;
+
+	i = 0;
+	while (*(s1 + i) != '\0' && *(s2 + i) != '\0' && i < n)
+	{
+		if (*(s1 + i) == *(s2 + i))
+		{
+			++i;
+		}
+		else
+		{
+			return (*(s1 + i) - *(s2 + i));
+		}
+	}
+	if (i == n && (*(s1 + i) == ' ' || *(s1 + i) == '\t' ||
+		       *(s1 + i) == '\0' || *(s1 + i) == '\n'))
+		return (0);
+	return (EXIT_FAILURE); /* one of the strings was too short, not the best*/
+}
