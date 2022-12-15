@@ -1,19 +1,22 @@
 #include "monty.h"
 
+char *filename = NULL;
+
 FILE *chk_file(int ac, char **av)
 {
 	FILE *fp;
 
 	if (ac != 2)
 	{
-		fprintf(stderr, "USAGE: %s file\n", av[0]);
+		fprintf(stderr, "USAGE: monty file\n");
 		exit(EXIT_FAILURE);
 	}
 
-	fp = fopen(av[1], "r");
+	filename = av[1];
+	fp = fopen(filename, "r");
 	if (fp == NULL)
 	{
-		fprintf(stderr, "Error: Can't open file %s\n", av[1]);
+		fprintf(stderr, "Error: Can't open file %s\n", filename);
 		exit(EXIT_FAILURE);
 	}
 

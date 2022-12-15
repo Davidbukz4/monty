@@ -35,7 +35,7 @@ void _push(stack_t **head, char *line, unsigned int line_no)
 	node = add_node(head, iVal);
 	if (node == NULL)
 	{
-		fprintf(stderr, "Error: malloc failed");
+		fprintf(stderr, "Error: malloc failed\n");
 		free_list(*head);
 		exit(EXIT_FAILURE);
 	}

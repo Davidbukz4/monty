@@ -36,6 +36,7 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
+extern char *filename;
 
 void free_list(stack_t *head);
 void _pall(stack_t **head, unsigned int line_no);
