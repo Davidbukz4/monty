@@ -10,7 +10,7 @@ void _pall(stack_t **head, unsigned int line_no)
 	temp = *head;
 	while (temp != NULL)
 	{
-		fprintf(stdout, "%d\n", temp->n);
+		printf("%d\n", temp->n);
 		temp = temp->next;
 	}
 }
