@@ -10,7 +10,7 @@
 void exec_func(stack_t **head, char *line, unsigned int line_no)
 {
 	int i, j;
-	char **str = NULL;
+	char **str = NULL, **new_str = NULL;
 	instruction_t cmd[] = {
 		{"pall", _pall},
 		{NULL, NULL}
@@ -20,21 +20,25 @@ void exec_func(stack_t **head, char *line, unsigned int line_no)
 	for (j = 0; str[j]; j++)
 	{
 		if (str[j][0] == '\0')
-			continue;
-		if (_strncmp("push", str[j], _strlen("push")) == 0)
+		{
+			new_str = _strtow(line, ' ');
+			if (new_str)
+				str[j] = new_str[0];
+			else
+				return;
+		}
+		if (_strcmp("push", str[j]) == 0)
 		{
 			_push(head, line, line_no);
 			return;
 		}
 		for (i = 0; cmd[i].opcode; i++)
 		{
-			if (_strncmp(cmd[i].opcode, str[j], _strlen(cmd[i].opcode)) == 0)
+			if (_strcmp(cmd[i].opcode, str[j]) == 0)
 			{
 				(cmd[i].f)(head, line_no);
 				return;
 			}
-			else
-				return;
 		}
 	}
 	for (i = 0; str[i]; i++)

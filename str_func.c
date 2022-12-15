@@ -148,5 +148,5 @@ int _strncmp(char *s1, char *s2, int n)
 	if (i == n && (*(s1 + i) == ' ' || *(s1 + i) == '\t' ||
 		       *(s1 + i) == '\0' || *(s1 + i) == '\n'))
 		return (0);
-	return (EXIT_FAILURE); /* one of the strings was too short, not the best*/
+	exit(EXIT_FAILURE);
 }

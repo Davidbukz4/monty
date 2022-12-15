@@ -34,13 +34,13 @@ char **sep_str(char *line)
 	ptr = (char **)malloc(_strlen(line) * sizeof(ptr));
 	if (ptr == NULL)
 	{
-		fprintf(stderr, "Error: malloc failed");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 	ptr[0] = malloc(sizeof(char *));
 	if (ptr[0] == NULL)
 	{
-		fprintf(stderr, "Error: malloc failed");
+		fprintf(stderr, "Error: malloc failed\n");
 		free(ptr);
 		exit(EXIT_FAILURE);
 	}
@@ -56,7 +56,7 @@ char **sep_str(char *line)
 				for (k = 0; k < cnt; k++)
 					free(ptr[k]);
 				free(ptr);
-				fprintf(stderr, "Error: malloc failed");
+				fprintf(stderr, "Error: malloc failed\n");
 				exit(EXIT_FAILURE);
 			}
 			j = 0; /* for next word, init index to 0 */

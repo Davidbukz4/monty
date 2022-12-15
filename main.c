@@ -30,13 +30,15 @@ int main(int ac, char **av)
 {
 	stack_t *head = NULL;
 	unsigned int line_no = 0;
-	size_t buf = 0;
+	size_t buf = 256;
 	ssize_t file_status;
 	char *line = NULL;
 	FILE *fp;
 
 	fp = chk_file(ac, av);
 	file_status = getline(&line, &buf, fp);
+	if ((line)[file_status - 1] == '\n')
+		(line)[file_status - 1] ='\0';
 	while (file_status != -1)
 	{
 		line_no++;
@@ -45,6 +47,8 @@ int main(int ac, char **av)
 		else
 			free(line);
 		file_status = getline(&line, &buf, fp);
+		if ((line)[file_status - 1] == '\n')
+			(line)[file_status - 1] ='\0';
 	}
 
 	fclose(fp);
