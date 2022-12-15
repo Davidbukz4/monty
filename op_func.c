@@ -4,7 +4,8 @@ void _push(stack_t **head, char *line, unsigned int line_no)
 {
 	char *val = NULL;
 	stack_t *node = NULL;
-	int iVal = 0, i;
+	int iVal = 0;
+	unsigned int i = 0;
 	char **new_line = NULL;
 
 	/* new_line = _strtow(line, ' '); */
@@ -20,7 +21,6 @@ void _push(stack_t **head, char *line, unsigned int line_no)
 		fprintf(stderr, "L%d: usage: push integer\n", line_no);
 		free(line);
 		free(*head);
-		*head = NULL;
 		exit(EXIT_FAILURE);
 	}
 	iVal = atoi(val);

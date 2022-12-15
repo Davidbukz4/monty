@@ -20,6 +20,7 @@ void exec_func(stack_t **head, char *line, unsigned int line_no)
 			continue;
 		if (_strncmp("push", str[j], _strlen("push")) == 0)
 		{
+			printf("j is %s\n", str[j]);
 			_push(head, line, line_no);
 			return;
 		}
@@ -31,10 +32,15 @@ void exec_func(stack_t **head, char *line, unsigned int line_no)
 				return;
 			}
 			else
-				return;
+				continue;
 		}
 	}
-	printf("L%d: unknown instruction %s\n", line_no, str[j]);
+	for (i = 0; str[i]; i++)
+		if (str[i][0] != '\0')
+		{
+			fprintf(stderr, "L%d: unknown instruction %s\n", line_no, str[i]);
+			break;
+		}
 	free(line);
 	free_list(*head);
 	exit(EXIT_FAILURE);
