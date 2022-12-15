@@ -12,7 +12,7 @@ void exec_func(stack_t **head, char *line, unsigned int line_no)
 	int i, j;
 	char **str = NULL, **new_str = NULL;
 	instruction_t cmd[] = {
-		{"pall", _pall},
+		{"pall", _pall}, {"pint", _pint},
 		{NULL, NULL}
 	};
 

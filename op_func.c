@@ -62,3 +62,22 @@ void _pall(stack_t **head, unsigned int line_no)
 		}
 	}
 }
+
+
+/**
+  * pint_stack - prints the value at the top of the stack
+  * @head: pointer to head node
+  * @line_no: line number
+  * Return: void pointer
+  */
+void _pint(stack_t **head, unsigned int line_no)
+{
+	if (head && *head)
+		printf("%d\n", (*head)->n);
+	else
+	{
+		fprintf(stderr, "L%d: can't pint, stack empty\n", line_no);
+		free_list(*head);
+		exit(EXIT_FAILURE);
+	}
+}

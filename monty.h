@@ -51,6 +51,7 @@ char *skip_spaces(char *str);
 int _strlen(char *s);
 int _strncmp(char *s1, char *s2, int n);
 char **sep_str(char *line);
+void _pint(stack_t **head, unsigned int line_no);
 
 
 #endif /* MONTY_H */
