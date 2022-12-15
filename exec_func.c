@@ -20,7 +20,6 @@ void exec_func(stack_t **head, char *line, unsigned int line_no)
 			continue;
 		if (_strncmp("push", str[j], _strlen("push")) == 0)
 		{
-			printf("j is %s\n", str[j]);
 			_push(head, line, line_no);
 			return;
 		}
@@ -32,7 +31,7 @@ void exec_func(stack_t **head, char *line, unsigned int line_no)
 				return;
 			}
 			else
-				continue;
+				return;
 		}
 	}
 	for (i = 0; str[i]; i++)
