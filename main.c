@@ -41,7 +41,7 @@ int main(int ac, char **av)
 	fp = chk_file(ac, av);
 	file_status = getline(&line, &buf, fp);
 	if ((line)[file_status - 1] == '\n')
-		(line)[file_status - 1] ='\0';
+		(line)[file_status - 1] = '\0';
 	while (file_status != -1)
 	{
 		line_no++;
@@ -51,7 +51,7 @@ int main(int ac, char **av)
 			free(line);
 		file_status = getline(&line, &buf, fp);
 		if ((line)[file_status - 1] == '\n')
-			(line)[file_status - 1] ='\0';
+			(line)[file_status - 1] = '\0';
 	}
 
 	fclose(fp);
