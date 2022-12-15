@@ -20,6 +20,12 @@ FILE *chk_file(int ac, char **av)
 	return (fp);
 }
 
+/**
+ * main - entry point
+ * @ac: argument count
+ * @av: array of argument strings
+ * Return: 0 if successful
+ */
 int main(int ac, char **av)
 {
 	stack_t *head = NULL;

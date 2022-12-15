@@ -1,5 +1,13 @@
 #include "monty.h"
 
+
+/**
+ * _push - pushes an element to the stack
+ * @head: pointer to head node
+ * @line: line read from the file
+ * @line_no: line number of line :)
+ * Return: void
+ */
 void _push(stack_t **head, char *line, unsigned int line_no)
 {
 	char *val = NULL;
@@ -30,5 +38,27 @@ void _push(stack_t **head, char *line, unsigned int line_no)
 		fprintf(stderr, "Error: malloc failed");
 		free_list(*head);
 		exit(EXIT_FAILURE);
+	}
+}
+
+
+/**
+ * _pall - prints all the value on the stack
+ * @head: pointer to head node
+ * @line_no: line number of line :)
+ * Return: void
+ */
+void _pall(stack_t **head, unsigned int line_no)
+{
+	stack_t *temp;
+	(void) line_no;
+
+	if (!head)
+		return;
+	temp = *head;
+	while (temp != NULL)
+	{
+		printf("%d\n", temp->n);
+		temp = temp->next;
 	}
 }

@@ -1,19 +1,22 @@
 #include "monty.h"
 
+/**
+ * exec_func - executes command from the file
+ * @head: pointer to head node of doubly linked list
+ * @line: line read from file
+ * @line_no: line number of the line :)
+ * Return: void
+ */
 void exec_func(stack_t **head, char *line, unsigned int line_no)
 {
 	int i, j;
-	/*char **sep_line = NULL;*/
 	char **str = NULL;
 	instruction_t cmd[] = {
 		{"pall", _pall},
 		{NULL, NULL}
 	};
 
-	/* sep_line = _strtow(line, ' ');*/
-	/* str = skip_spaces(line); */
 	str = sep_str(line);
-
 	for (j = 0; str[j]; j++)
 	{
 		if (str[j][0] == '\0')

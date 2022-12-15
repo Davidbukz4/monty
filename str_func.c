@@ -88,7 +88,7 @@ int _strcmp(char *s1, char *s2)
 
 /**
  * skip_spaces - skip whitespaces
- * @s: a string
+ * @str: a string
  *
  * Return: pointer to where is the first non space char or NULL
  */
