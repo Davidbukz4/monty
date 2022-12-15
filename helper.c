@@ -69,3 +69,38 @@ char **sep_str(char *line)
 	}
 	return (ptr);
 }
+
+
+/**
+ * get_argument - return the arguments for calulations
+ * @head: pointer to dll
+ * @line_no: line number
+ * Return: the argument
+ */
+int get_argument(stack_t **head, unsigned int line_no)
+{
+	int val;
+	stack_t *temp;
+
+	if (!head || !(*head))
+	{
+		printf("L%d: can't add, stack too short\n", line_no);
+		free_list(*head);
+		exit(EXIT_FAILURE);
+	}
+
+	temp = *head;
+	*head = (*head)->next;
+	if (*head)
+		(*head)->prev = NULL;
+
+	if (temp == NULL)
+	{
+		printf("L%d: can't add, stack too short\n", line_no);
+		free_list(*head);
+		exit(EXIT_FAILURE);
+	}
+	val = temp->n;
+	free(temp);
+	return (val);
+}

@@ -13,7 +13,7 @@ void exec_func(stack_t **head, char *line, unsigned int line_no)
 	char **str = NULL, **new_str = NULL;
 	instruction_t cmd[] = {
 		{"pall", _pall}, {"pint", _pint}, {"pop", _pop}, {"swap", _swap},
-		{NULL, NULL}
+		{"add", _add}, {NULL, NULL}
 	};
 
 	str = sep_str(line);
