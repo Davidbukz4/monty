@@ -65,7 +65,7 @@ void _pall(stack_t **head, unsigned int line_no)
 
 
 /**
-  * pint_stack - prints the value at the top of the stack
+  * _pint - prints the value at the top of the stack
   * @head: pointer to head node
   * @line_no: line number
   * Return: void pointer
@@ -80,4 +80,28 @@ void _pint(stack_t **head, unsigned int line_no)
 		free_list(*head);
 		exit(EXIT_FAILURE);
 	}
+}
+
+
+/**
+ * _pop - pull an element from the stack or queue
+ * @head: pointer to head node
+ * @line_no: line number
+ */
+void _pop(stack_t **head, unsigned int line_no)
+{
+	stack_t *temp;
+
+	if (!head || !(*head))
+	{
+		printf("L%d: can't pop an empty stack\n", line_no);
+		free_list(*head);
+		exit(EXIT_FAILURE);
+	}
+
+	temp = *head;
+	*head = (*head)->next;
+	if (*head)
+		(*head)->prev = NULL;
+	free(temp);
 }
