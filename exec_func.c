@@ -3,14 +3,14 @@
 void exec_func(stack_t **head, char *line, unsigned int line_no)
 {
 	int i, j;
-	char **sep_line = NULL;
+	/*char **sep_line = NULL;*/
 	char **str = NULL;
 	instruction_t cmd[] = {
 		{"pall", _pall},
 		{NULL, NULL}
 	};
 
-	sep_line = _strtow(line, ' ');
+	/* sep_line = _strtow(line, ' ');*/
 	/* str = skip_spaces(line); */
 	str = sep_str(line);
 
@@ -34,7 +34,7 @@ void exec_func(stack_t **head, char *line, unsigned int line_no)
 				return;
 		}
 	}
-	printf("L%d: unknown instruction %s\n", line_no, sep_line[0]);
+	printf("L%d: unknown instruction %s\n", line_no, str[j]);
 	free(line);
 	free_list(*head);
 	exit(EXIT_FAILURE);
