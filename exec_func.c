@@ -49,5 +49,6 @@ void exec_func(stack_t **head, char *line, unsigned int line_no)
 		}
 	free(line);
 	free_list(*head);
+	*head = NULL;
 	exit(EXIT_FAILURE);
 }
