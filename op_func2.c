@@ -14,3 +14,15 @@ void _add(stack_t **head, unsigned int line_no)
 
 	add_node(head, num1 + num2);
 }
+
+
+/**
+ * _nop - do not do anything
+ * @head: pointer to head node
+ * @line_no: line number
+ */
+void _nop(stack_t **head, unsigned int line_no)
+{
+	(void)head;
+	(void)line_no;
+}

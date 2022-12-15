@@ -56,5 +56,6 @@ void _pop(stack_t **head, unsigned int line_no);
 void _swap(stack_t **head, unsigned int line_no);
 void _add(stack_t **head, unsigned int line_no);
 int get_argument(stack_t **head, unsigned int line_no);
+void _nop(stack_t **head, unsigned int line_no);
 
 #endif /* MONTY_H */
