@@ -88,7 +88,6 @@ int get_argument(stack_t **head, unsigned int line_no)
 	if (!head || !(*head))
 	{
 		printf("L%d: can't add, stack too short\n", line_no);
-		free_list(*head);
 		free_all();
 		exit(EXIT_FAILURE);
 	}
@@ -101,7 +100,6 @@ int get_argument(stack_t **head, unsigned int line_no)
 	if (temp == NULL)
 	{
 		printf("L%d: can't add, stack too short\n", line_no);
-		free_list(*head);
 		free_all();
 		exit(EXIT_FAILURE);
 	}
