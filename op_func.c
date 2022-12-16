@@ -40,9 +40,6 @@ void _push(stack_t **head, char *line, unsigned int line_no)
 		free_all();
 		exit(EXIT_FAILURE);
 	}
-	for (i = 0; new_line[i]; i++)
-		free(new_line[i]);
-	free(new_line);
 }
 
 
