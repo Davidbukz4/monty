@@ -11,8 +11,8 @@ void free_all(void)
 		free_list(glo.head);
 	if (glo.buf_line)
 		free(glo.buf_line);
-	/*if (glo.fp)
-		fclose(glo.fp);*/
+	if (glo.fp)
+		fclose(glo.fp);
 }
 
 FILE *chk_file(int ac, char **av)
@@ -51,8 +51,8 @@ int main(int ac, char **av)
 
 	glo.fp = chk_file(ac, av);
 	file_status = getline(&glo.buf_line, &buf, glo.fp);
-	if ((glo.buf_line)[file_status - 1] == '\n')
-		(glo.buf_line)[file_status - 1] = '\0';
+	/*if ((glo.buf_line)[file_status - 1] == '\n')
+		(glo.buf_line)[file_status - 1] = '\0';*/
 	while (file_status != -1)
 	{
 		line_no++;
@@ -61,8 +61,8 @@ int main(int ac, char **av)
 		else
 			free(glo.buf_line);
 		file_status = getline(&glo.buf_line, &buf, glo.fp);
-		if ((glo.buf_line)[file_status - 1] == '\n')
-			(glo.buf_line)[file_status - 1] = '\0';
+		/*if ((glo.buf_line)[file_status - 1] == '\n')
+			(glo.buf_line)[file_status - 1] = '\0';*/
 	}
 
 	free_all();
