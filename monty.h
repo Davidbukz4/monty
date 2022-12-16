@@ -36,7 +36,20 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-extern char *filename;
+/**
+ * struct global - global structure to use in the function
+ * @fp: file descriptor
+ * @buf_line: input string
+ * @head: pointer to head node
+ */
+typedef struct global
+{
+	FILE *fp;
+	char *buf_line;
+	stack_t *head;
+} global_t;
+
+extern global_t glo;
 
 void free_list(stack_t *head);
 void _pall(stack_t **head, unsigned int line_no);
@@ -57,5 +70,6 @@ void _swap(stack_t **head, unsigned int line_no);
 void _add(stack_t **head, unsigned int line_no);
 int get_argument(stack_t **head, unsigned int line_no);
 void _nop(stack_t **head, unsigned int line_no);
+void free_all(void);
 
 #endif /* MONTY_H */

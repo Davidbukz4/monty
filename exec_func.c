@@ -47,8 +47,6 @@ void exec_func(stack_t **head, char *line, unsigned int line_no)
 			fprintf(stderr, "L%d: unknown instruction %s\n", line_no, str[i]);
 			break;
 		}
-	free(line);
-	free_list(*head);
-	*head = NULL;
+	free_all();
 	exit(EXIT_FAILURE);
 }

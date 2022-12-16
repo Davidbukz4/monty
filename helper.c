@@ -35,6 +35,7 @@ char **sep_str(char *line)
 	if (ptr == NULL)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
+		free_all();
 		exit(EXIT_FAILURE);
 	}
 	ptr[0] = malloc(sizeof(char *));
@@ -42,6 +43,7 @@ char **sep_str(char *line)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		free(ptr);
+		free_all();
 		exit(EXIT_FAILURE);
 	}
 	for (i = 0; i <= (_strlen(line)); i++)
@@ -57,6 +59,7 @@ char **sep_str(char *line)
 					free(ptr[k]);
 				free(ptr);
 				fprintf(stderr, "Error: malloc failed\n");
+				free_all();
 				exit(EXIT_FAILURE);
 			}
 			j = 0; /* for next word, init index to 0 */
@@ -85,7 +88,7 @@ int get_argument(stack_t **head, unsigned int line_no)
 	if (!head || !(*head))
 	{
 		printf("L%d: can't add, stack too short\n", line_no);
-		free_list(*head);
+		free_all();
 		exit(EXIT_FAILURE);
 	}
 
@@ -97,7 +100,7 @@ int get_argument(stack_t **head, unsigned int line_no)
 	if (temp == NULL)
 	{
 		printf("L%d: can't add, stack too short\n", line_no);
-		free_list(*head);
+		free_all();
 		exit(EXIT_FAILURE);
 	}
 	val = temp->n;
