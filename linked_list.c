@@ -1,52 +1,90 @@
 #include "monty.h"
 
 /**
- * add_node - adds node to the top of a list
- * @head: pointer to the head node
- * @n: node value
- * Return: pointer to head node
+ *add_dnodeint_end - add a note at the end of the doubly link list
+ *@head: first position of linked list
+ *@n: data to store
+ *Return: a doubly linked list
  */
-stack_t *add_node(stack_t **head, int n)
+stack_t *add_dnodeint_end(stack_t **head, const int n)
 {
-	stack_t *newnode;
+	stack_t *temp, *aux;
 
-	newnode = (stack_t *)malloc(sizeof(stack_t));
-	if (newnode == NULL)
+	if (head == NULL)
+		return (NULL);
+	temp = malloc(sizeof(stack_t));
+	if (!temp)
 	{
 		fprintf(stderr, "Error: malloc failed\n");
-		free_list(*head);
+		free_vglo();
 		exit(EXIT_FAILURE);
 	}
-	newnode->prev = NULL;
-	newnode->next = NULL;
-	newnode->n = n;
+	temp->n = n;
+	/*Careful with the first time*/
 	if (*head == NULL)
-		*head = newnode;
-	else
 	{
-		(*head)->prev = newnode;
-		newnode->next = *head;
-		*head = newnode;
+		temp->next = *head;
+		temp->prev = NULL;
+		*head = temp;
+		return (*head);
 	}
-	return (*head);
+	aux = *head;
+	while (aux->next)
+		aux = aux->next;
+	temp->next = aux->next;
+	temp->prev = aux;
+	aux->next = temp;
+	return (aux->next);
 }
 
-
 /**
- * free_list - frees a linked list
- * @head: pointer to head node
- * Return: void
+ *add_dnodeint - add a note at the begining of the doubly link list
+ *@head: first position of linked list
+ *@n: data to store
+ *Return: a doubly linked list
  */
-void free_list(stack_t *head)
+stack_t *add_dnodeint(stack_t **head, const int n)
 {
 	stack_t *temp;
 
-	if (!head)
-		return;
-	while (head)
+	if (head == NULL)
+		return (NULL);
+	temp = malloc(sizeof(stack_t));
+	if (!temp)
 	{
-		temp = head;
+		fprintf(stderr, "Error: malloc failed\n");
+		free_vglo();
+		exit(EXIT_FAILURE);
+	}
+	temp->n = n;
+	/*Careful with the first time*/
+	if (*head == NULL)
+	{
+		temp->next = *head;
+		temp->prev = NULL;
+		*head = temp;
+		return (*head);
+	}
+	(*head)->prev = temp;
+	temp->next = (*head);
+	temp->prev = NULL;
+	*head = temp;
+	return (*head);
+}
+
+/**
+ * free_dlistint - frees the doubly linked list
+ *
+ * @head: head of the list
+ * Return: no return
+ */
+void free_dlistint(stack_t *head)
+{
+	stack_t *tmp;
+
+	while ((tmp = head) != NULL)
+	{
 		head = head->next;
-		free(temp);
+		free(tmp);
 	}
 }

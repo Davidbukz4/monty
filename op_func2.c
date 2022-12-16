@@ -1,28 +1,102 @@
 #include "monty.h"
 
 /**
- * _add - add the top 2 values on the stack
- * @head: pointer to head node
- * @line_no: line number
+ * _queue - sets the format of the data to a queue (FIFO)
+ *
+ * @doubly: head of the linked list
+ * @cline: line number;
+ * Return: no return
  */
-void _add(stack_t **head, unsigned int line_no)
+void _queue(stack_t **doubly, unsigned int cline)
 {
-	int num1, num2;
+	(void)doubly;
+	(void)cline;
 
-	num1 = get_argument(head, line_no);
-	num2 = get_argument(head, line_no);
-
-	add_node(head, num1 + num2);
+	vglo.lifo = 0;
 }
 
+/**
+ * _stack - sets the format fo the data to a stack (LIFO)
+ *
+ * @doubly: head of the linked list
+ * @cline: line number;
+ * Return: no return
+ */
+void _stack(stack_t **doubly, unsigned int cline)
+{
+	(void)doubly;
+	(void)cline;
+
+	vglo.lifo = 1;
+}
 
 /**
- * _nop - do not do anything
- * @head: pointer to head node
- * @line_no: line number
+ * _add - adds the top two elements of the stack
+ *
+ * @doubly: head of the linked list
+ * @cline: line number;
+ * Return: no return
  */
-void _nop(stack_t **head, unsigned int line_no)
+void _add(stack_t **doubly, unsigned int cline)
 {
-	(void)head;
-	(void)line_no;
+	int m = 0;
+	stack_t *aux = NULL;
+
+	aux = *doubly;
+
+	for (; aux != NULL; aux = aux->next, m++)
+		;
+
+	if (m < 2)
+	{
+		fprintf(stderr, "L%u: can't add, stack too short\n", cline);
+		free_vglo();
+		exit(EXIT_FAILURE);
+	}
+
+	aux = (*doubly)->next;
+	aux->n += (*doubly)->n;
+	_pop(doubly, cline);
+}
+
+/**
+ * _nop - doesn't do anythinhg
+ *
+ * @doubly: head of the linked list
+ * @cline: line number;
+ * Return: no return
+ */
+void _nop(stack_t **doubly, unsigned int cline)
+{
+	(void)doubly;
+	(void)cline;
+}
+
+/**
+ * _sub - subtracts the top element to the second top element of the stack
+ *
+ * @doubly: head of the linked list
+ * @cline: line number;
+ * Return: no return
+ */
+void _sub(stack_t **doubly, unsigned int cline)
+{
+	int m = 0;
+	stack_t *aux = NULL;
+
+	aux = *doubly;
+
+	for (; aux != NULL; aux = aux->next, m++)
+		;
+
+	if (m < 2)
+	{
+		fprintf(stderr, "L%u: can't sub, stack too short\n", cline);
+		free_vglo();
+		exit(EXIT_FAILURE);
+	}
+
+	aux = (*doubly)->next;
+	aux->n -= (*doubly)->n;
+	_pop(doubly, cline);
 }
