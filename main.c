@@ -11,8 +11,8 @@ void free_all(void)
 		free_list(glo.head);
 	if (glo.buf_line)
 		free(glo.buf_line);
-	if (glo.fp)
-		fclose(glo.fp);
+	/*if (glo.fp)
+		fclose(glo.fp);*/
 }
 
 FILE *chk_file(int ac, char **av)
